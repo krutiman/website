@@ -1,0 +1,20 @@
+{% extends 'cars/base.html' %}
+
+{% block content %}
+
+<img class="mainimage" src="../../static/cars/images/photo2.jpg">
+<h1 style="position: absolute; top: 1000px;">{{ title }}</h1>
+
+<div class="mainpage">
+    <ul class="list1a">
+        {% for p in posts%}
+        <li style="cursor: pointer;">
+            <a style="color: black; text-decoration: none;" href="{{ p.get_absolute_url }}">
+            <h2>{{ p.title }}</h2>
+            <p style="font-size: 22px;">{{ p.content|truncatewords:30 }}</p>
+            <hr>
+        </li>
+        {% endfor %}>
+    </ul>
+</div>
+{% endblock %}

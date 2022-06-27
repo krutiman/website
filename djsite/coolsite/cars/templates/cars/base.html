@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>The CAR Palace</title>
+        <link rel="stylesheet" href='../../static/cars/css/styles.css'>
+    </head>
+    <body>
+        {% block mainmenu %}
+        <div class="menu">
+            <a href="{% url 'home' %}"><img id="logo" src="../../static/cars/images/logo.jpg"/></a>
+            <ul class="hor">
+            {% for m in menu %}
+                <li id="menel"><a style="color: white; text-decoration: none;" href="{% url m.url_name %}">{{m.title}}</a></li>
+            {% endfor %}
+            </ul>
+        </div>
+
+        <div id="lmenu">
+            <img style="width: 100px; position: absolute; left:-25px; top:5px;" src="../../static/cars/images/arrow.png">
+            <div id="hidden_menu">
+                {% for p in posts %}
+                    <a style="color: black; text-decoration: none;" href="{{ p.get_absolute_url }}"><br><h2>{{ p.title }}</h2></a>
+                    <br>
+                {% endfor %}
+            </div>
+        </div>
+        {% endblock mainmenu %}
+
+        <div class="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+</html>
